@@ -1,0 +1,396 @@
+@import "@inkress/apps-core/styles.css";
+
+/* ─── Limit Increase — app-specific styles ─────────────────────── */
+
+/* Loading skeleton layout ---------------------------------------- */
+.li-skeleton-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+.li-skeleton-stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--e1);
+  padding: 16px 18px;
+}
+.li-skeleton-stat .bv-skeleton + .bv-skeleton { margin-top: 8px; }
+
+/* Active overrides list ------------------------------------------ */
+.li-overrides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.li-override-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--ok-wash);
+  border: 1px solid color-mix(in oklch, var(--ok) 25%, transparent);
+  border-radius: var(--r-sm);
+}
+.li-override-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.li-override-kind {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.li-override-time {
+  font-size: 0.75rem;
+  color: var(--ok);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Request form ---------------------------------------------------- */
+.li-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.li-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 480px) {
+  .li-form-row { grid-template-columns: 1fr; }
+}
+.li-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.li-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  letter-spacing: 0.01em;
+}
+.li-hint {
+  font-size: 0.6875rem;
+  color: var(--ink-faint);
+  margin-top: -2px;
+}
+.li-input {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-family: inherit;
+  transition: border-color 0.12s var(--ease), box-shadow 0.12s var(--ease);
+}
+.li-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--accent) 18%, transparent);
+}
+.li-input::placeholder { color: var(--ink-faint); }
+textarea.li-input { resize: vertical; min-height: 76px; }
+
+/* Fee breakdown card --------------------------------------------- */
+.li-fee-box {
+  background: var(--accent-wash);
+  border: 1px solid color-mix(in oklch, var(--accent) 22%, transparent);
+  border-radius: var(--r-sm);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.li-fee-box.is-empty {
+  background: var(--panel);
+  border-color: var(--line);
+}
+.li-fee-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.li-fee-label {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.li-fee-value {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.li-fee-total-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.li-fee-total-value {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.li-fee-divider {
+  height: 1px;
+  background: color-mix(in oklch, var(--accent) 18%, transparent);
+  margin: 2px 0;
+}
+.li-fee-divider.is-empty {
+  background: var(--line);
+}
+.li-fee-placeholder {
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 4px 0;
+}
+
+/* Form footer / submit row --------------------------------------- */
+.li-foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 4px;
+}
+.li-submit {
+  min-height: 42px;
+  padding: 0 24px;
+  font-size: 0.875rem;
+}
+
+/* Velocity mode badge ------------------------------------------- */
+.li-mode-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.li-mode-badge.is-velocity {
+  background: var(--warn-wash);
+  color: oklch(0.52 0.13 70);
+  border: 1px solid color-mix(in oklch, var(--warn) 30%, transparent);
+}
+.li-mode-badge.is-money {
+  background: var(--accent-wash);
+  color: var(--accent);
+  border: 1px solid color-mix(in oklch, var(--accent) 25%, transparent);
+}
+
+/* Checkout / payment waiting panel ------------------------------- */
+.li-checkout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.li-checkout-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.li-checkout-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-wash);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.li-checkout-icon svg { width: 22px; height: 22px; }
+.li-checkout-meta h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 3px;
+  letter-spacing: -0.01em;
+}
+.li-checkout-meta p {
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.5;
+}
+.li-checkout-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  min-height: 46px;
+}
+.li-checkout-status.is-success {
+  background: var(--ok-wash);
+  border-color: color-mix(in oklch, var(--ok) 25%, transparent);
+  color: var(--ok);
+  font-weight: 600;
+}
+.li-checkout-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.li-checkout-actions a.primary,
+.li-checkout-actions button.primary {
+  width: 100%;
+  min-height: 44px;
+  font-size: 0.9rem;
+  justify-content: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: var(--r-sm);
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s var(--ease), box-shadow 0.15s var(--ease);
+  box-shadow: var(--e1);
+}
+.li-checkout-actions a.primary:hover,
+.li-checkout-actions button.primary:hover {
+  background: var(--accent-press);
+  box-shadow: var(--e2);
+  text-decoration: none;
+}
+.li-checkout-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.li-poll-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  flex-shrink: 0;
+  animation: li-pulse 1.8s ease-in-out infinite;
+}
+@keyframes li-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Return landing ------------------------------------------------- */
+.li-return {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.li-return-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--e3);
+  padding: 36px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.li-return-check {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ok-wash);
+  color: var(--ok);
+  display: grid;
+  place-items: center;
+  border: 2px solid color-mix(in oklch, var(--ok) 25%, transparent);
+}
+.li-return-check svg { width: 26px; height: 26px; }
+.li-return-card h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+.li-return-card p {
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 34ch;
+}
+.li-return-foot {
+  font-size: 0.6875rem;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+/* Error state ---------------------------------------------------- */
+.li-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 24px;
+  text-align: center;
+}
+.li-error-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--bad-wash);
+  color: var(--bad);
+  display: grid;
+  place-items: center;
+}
+.li-error-icon svg { width: 24px; height: 24px; }
+.li-error h3 {
+  font-size: 0.9375rem;
+  color: var(--ink);
+  margin: 0;
+}
+.li-error p {
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 30ch;
+}
+
+/* Util ----------------------------------------------------------- */
+.li-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 2px 0;
+}
